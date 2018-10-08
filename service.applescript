@@ -19,6 +19,8 @@ on run {input, parameters}
 		end if
 	end tell
 	
+	set newPath to defaultPath
+	
 	try
 		set resultFile to (choose file name with prompt "Save As File" default name ("untitled.json") default location defaultPath) as text
 		if resultFile does not end with ".json" then set resultFile to resultFile & ".json"
@@ -43,9 +45,6 @@ on run {input, parameters}
 			display dialog (error_string)
 			
 		end try
-	on error
-		return
-		
 	end try
 	
 	if newPath is not defaultPath then
