@@ -20,6 +20,22 @@ on run {input, parameters}
 	end tell
 	
 	set newPath to defaultPath
+	set j to "{\"key\":\"value\"}"
+	
+	set jq_is_installed to false
+	try
+		do shell script ("printf " & (quoted form of j) & " | /usr/local/bin/jq .")
+		set jq_is_installed to true
+	end try
+	
+	if jq_is_installed then
+		try
+			set the_result to do shell script ("printf " & (quoted form of (input as text)) & " | /usr/local/bin/jq .")
+		on error errString
+			set response to display dialog ("Invalid JSON!" & return & errString) buttons ["Save anyway…", "Don‘t save"] default button 2 with icon caution
+			if button returned of response is "Don‘t save" then return
+		end try
+	end if
 	
 	try
 		set resultFile to (choose file name with prompt "Save As File" default name ("untitled.json") default location defaultPath) as text
