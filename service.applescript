@@ -22,10 +22,11 @@ on run {input, parameters}
 	set newPath to defaultPath
 	set j to "{\"key\":\"value\"}"
 	
-	set jq_is_installed to false
 	try
 		do shell script ("printf " & (quoted form of j) & " | /usr/local/bin/jq .")
 		set jq_is_installed to true
+	on error
+		set jq_is_installed to false
 	end try
 	
 	if jq_is_installed then
