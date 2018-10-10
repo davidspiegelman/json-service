@@ -5,8 +5,7 @@ An automator workflow that acts as a system-wide text selection service in macOS
 2. Choose **Selection to json file** from the **Services** menu
 3. Choose a file name and destination in the file save dialog
 ## Advanced Usage
-Assign a hotkey to the service by following these [instructions][]
-
+Assign a hotkey to the service by following these [instructions][].  
 (note: the hotkey has to include the command key in order for it to work, for example, command-F19 )
 ## Installation
 1. Grab latest version from [here][]
