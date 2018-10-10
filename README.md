@@ -6,6 +6,7 @@ An automator workflow that acts as a system-wide text selection service in macOS
 3. Choose a file name and destination in the file save dialog
 ## Advanced Usage
 Assign a hotkey to the service by following these [instructions][]
+(note: the hotkey has to use the command key in order to work, for example, command-F19 )
 ## Installation
 1. Grab latest version from [here][]
 2. Unzip file
@@ -17,4 +18,4 @@ This quick look plugin is very helpful `brew install quicklook-json`
 
 
 [here]: https://github.com/davidspiegelman/json-service/releases/latest
-[instructions]: https://blog.fosketts.net/2010/08/09/assign-keyboard-shortcut-applescript-automator-service/
+[instructions]: https://www.macworld.com/article/1163996/software-utilities/how-to-use-services-in-mac-os-x.html
