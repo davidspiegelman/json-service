@@ -6,6 +6,7 @@ An automator workflow that acts as a system-wide text selection service in macOS
 3. Choose a file name and destination in the file save dialog
 ## Advanced Usage
 Assign a hotkey to the service by following these [instructions][]
+
 (note: the hotkey has to use the command key in order to work, for example, command-F19 )
 ## Installation
 1. Grab latest version from [here][]
