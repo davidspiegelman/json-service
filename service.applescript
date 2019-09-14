@@ -23,7 +23,7 @@ on run {input, parameters}
 	set j to "{\"key\":\"value\"}"
 	
 	try
-		do shell script ("printf " & (quoted form of j) & " | /usr/local/bin/jq .")
+		do shell script ("command -v /usr/local/bin/jq")
 		set jq_is_installed to true
 	on error
 		set jq_is_installed to false
@@ -33,9 +33,12 @@ on run {input, parameters}
 		try
 			set the_result to do shell script ("printf " & (quoted form of (input as text)) & " | /usr/local/bin/jq .")
 		on error errString
-			set response to display dialog ("Invalid JSON!" & return & errString) buttons ["Save anyway…", "Don‘t save"] default button 2 with icon caution
-			if button returned of response is "Don‘t save" then return
+			set response to display dialog ("Invalid JSON!" & return & errString) buttons ["Save anyway…", "Don’t save"] default button 2 with icon caution
+			if button returned of response is "Don’t save" then return
 		end try
+	else
+		display alert ("jq is not installed." & return & return & "Please install using homebrew:" & return & " 'brew install jq'")
+		return
 	end if
 	
 	try
@@ -53,6 +56,7 @@ on run {input, parameters}
 				set file type of jsonFile to "JSON"
 			end tell
 			set newPath to POSIX path of ((resultFile & "::") as alias)
+			do shell script ("open " & POSIX path of resultFile)
 			
 		on error error_string
 			try
