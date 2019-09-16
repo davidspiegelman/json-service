@@ -1,7 +1,7 @@
 # json-service
 An automator workflow that acts as a system-wide text selection service in macOS. This will allow you to save any text selection and save it as a json file. The json will automatically be validated  prior to saving. It appears in the Services menu as **Selection to json file**. 
 ## Requirements
-jq must be installed in /usr/locl/bin  
+jq must be installed in /usr/local/bin  
 To use homebrew to install, type `brew install jq`
 ## Usage
 1. Select any text representing a json
