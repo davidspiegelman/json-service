@@ -31,7 +31,7 @@ on run {input, parameters}
 	
 	if jq_is_installed then
 		try
-			set the_result to do shell script ("printf " & (quoted form of (input as text)) & " | /usr/local/bin/jq .")
+			set the_result to do shell script ("printf " & (quoted form of (input as text)) & " | /usr/local/bin/jq . -c | /usr/local/bin/jq .")
 		on error errString
 			set response to display dialog ("Invalid JSON!" & return & errString) buttons ["Save anyway…", "Don’t save"] default button 2 with icon caution
 			if button returned of response is "Don’t save" then return
@@ -48,7 +48,7 @@ on run {input, parameters}
 		try
 			set the open_target_file to open for access file resultFile with write permission
 			set eof of the open_target_file to 0
-			write input to the open_target_file as «class utf8» starting at eof
+			write the_result to the open_target_file as «class utf8» starting at eof
 			close access the open_target_file
 			
 			set jsonFile to resultFile as alias
